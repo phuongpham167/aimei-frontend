@@ -16,8 +16,8 @@
                   <b-form-input type="password" class="form-control" placeholder="password" autocomplete="current-password" v-model="password" />
                 </b-input-group>
                 <b-row>
-                  <b-col cols="6">
-                    <b-button variant="primary" @click="doLogin()" :disabled="disableLoginButton" class="px-4">Login</b-button>
+                  <b-col cols="12">
+                    <b-button variant="primary" @click="doLogin()" :disabled="disableLoginButton" class="button-login">Login</b-button>
                   </b-col>
                 </b-row>
               </b-form>
@@ -71,5 +71,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .button-login{
+    margin: auto;
+  }
 </style>

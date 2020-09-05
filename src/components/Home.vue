@@ -1,14 +1,19 @@
 <template>
-  <div class="home">
+  <b-container fluid="sm">
     <section class="hero is-dark">
-      List province
-      <ul>
-        <li v-for="(province, index) in provinces" :key="index">
-          <p><strong>{{province.name}}</strong></p>
-        </li>
-      </ul>
+      <h1>List province</h1>
+      <b-list-group>
+        <b-list-group-item v-for="(province, index) of provinces" :key="index">
+          <b-row>
+            <b-col>{{province.name}}</b-col>
+            <b-col>
+                <b-button variant="outline-primary" @click.prevent="navigateToDetail(province.id)">details</b-button>
+            </b-col>
+          </b-row>
+        </b-list-group-item>
+      </b-list-group>
     </section>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -26,6 +31,11 @@ export default {
       .then(response => {
         this.provinces = response.data.data
       })
+  },
+  methods: {
+    navigateToDetail (provinceId) {
+      this.$router.push('/provinces/' + provinceId)
+    }
   }
 }
 </script>
