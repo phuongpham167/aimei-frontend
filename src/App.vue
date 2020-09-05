@@ -1,13 +1,30 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!--<div id="nav">-->
+      <!--<router-link to="/">Home</router-link> |-->
+      <!--<router-link to="/about">About</router-link>-->
+    <!--</div>-->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import * as Api from './api'
+
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    this.loadLoggedInUser()
+  },
+  methods: {
+    loadLoggedInUser () {
+      const currentUser = localStorage.getItem('user')
+      if (currentUser) {
+        const user = JSON.parse(currentUser)
+        Api.setAuthorizedToken(user.data.api_token)
+      }
+    }
+  }
 }
 </script>
 
