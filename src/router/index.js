@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import ProvinceDetail from '@/components/ProvinceDetail'
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ export const router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/provinces/:provinceId',
+      name: 'ProvinceDetail',
+      component: ProvinceDetail
     }
   ]
 })
